@@ -1,0 +1,19 @@
+<div style="padding: 100px; height: 100%; box-sizing: border-box;">
+  <mat-card style="height: 100%; box-sizing: border-box; padding:0">
+    <file-explorer [fileElements]="fileElements | async" [path]="currentPath" [canNavigateUp]="canNavigateUp" (folderAdded)="addFolder($event)"
+      (elementRemoved)="removeElement($event)" (navigatedDown)="navigateToFolder($event)" (navigatedUp)="navigateUp()" (elementRenamed)="renameElement($event)"
+      (elementMoved)="moveElement($event)">
+    </file-explorer>
+    <a [href]="fileUrl" download="file.txt">DownloadFile</a>
+<br>
+<br>
+    <div style="text-align:center">
+      <div [innerHtml]='msg'></div>
+      <label>
+        <input type="file" (change)="selectFile($event)">
+        </label>
+        <button [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+    </div>
+
+  </mat-card>
+</div>
